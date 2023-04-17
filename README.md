@@ -37,7 +37,7 @@ You can choose between
 ![](https://github.com/voorhoede/datocms-plugin-custom-page/raw/main/docs/custom-page-top-menu.png)
 
 **Side menu** will show the menu item as first item in the sidebar on the content pages
-![](https://github.com/voorhoede/datocms-plugin-custom-page/raw/main/docs/custom-sidebar.png)
+![](https://github.com/voorhoede/datocms-plugin-custom-page/raw/main/docs/custom-page-sidebar.png)
 
 **Settings menu** will show the menu item as first item in the sidebar on the setting pages
 ![](https://github.com/voorhoede/datocms-plugin-custom-page/raw/main/docs/custom-page-sidebar-settings.png)
