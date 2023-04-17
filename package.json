@@ -1,0 +1,74 @@
+{
+  "name": "datocms-plugin-custom-page",
+  "homepage": "https://github.com/voorhoede/datocms-plugin-custom-page",
+  "version": "1.0.0",
+  "description": "The custom page DatoCMS plugin adds the ability to have a custom page in your DatoCMS instance",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "start": "cross-env BROWSER='none' PUBLIC_URL='/' react-scripts start",
+    "build": "cross-env PUBLIC_URL='.' react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "datocms",
+    "datocms-plugin",
+    "custom",
+    "page",
+    "custom-page",
+    "docs",
+    "documentation",
+    "documentation-page",
+    "iframe",
+    "menu",
+    "menu-item"
+  ],
+  "files": [
+    "build",
+    "docs"
+  ],
+  "author": "Voorhoede",
+  "license": "MIT",
+  "datoCmsPlugin": {
+    "title": "Custom page",
+    "previewImage": "docs/preview.png",
+    "coverImage": "docs/cover.png",
+    "entryPoint": "build/index.html"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "react-scripts": "^5.0.1"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.192",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
+    "datocms-plugin-sdk": "^0.7.7",
+    "datocms-react-ui": "^0.7.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "slugify": "^1.6.6",
+    "typescript": "^4.9.5"
+  }
+}
