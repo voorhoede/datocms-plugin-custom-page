@@ -23,7 +23,7 @@ export default function PageScreen({ ctx }: PropTypes) {
       )
     } else {
       return (
-        <div className={styles.pageScreen}>
+        <div className="layout">
           <p>{`Welcome to ${pluginParameters.pageName || 'this page'}!`}</p>
         </div>
       )
