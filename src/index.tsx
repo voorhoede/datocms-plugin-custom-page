@@ -51,14 +51,6 @@ connect({
     ] as MainNavigationTab['placement']
     return [
       {
-        label: 'test',
-        icon: pluginParameters.iconName || defaultIconName,
-        placement,
-        pointsTo: {
-          pageId: 'test',
-        },
-      },
-      {
         label: pluginParameters.pageName || defaultPageName,
         icon: pluginParameters.iconName || defaultIconName,
         placement,
