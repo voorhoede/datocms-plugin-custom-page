@@ -4,20 +4,28 @@ import {
   RenderConfigScreenCtx,
   RenderPageCtx,
   OnBootCtx,
+  MainNavigationTab,
+  ContentAreaSidebarItem,
+  SettingsAreaSidebarItemGroup,
 } from 'datocms-plugin-sdk'
 
 import ConfigScreen from './entrypoints/ConfigScreen/ConfigScreen'
 import PageScreen from './entrypoints/PageScreen/PageScreen'
-import { render } from './utils/render'
+import { render } from './lib/render'
 import { GlobalParameters, PageType } from './lib/types'
 import {
+  contentAreaSidebarItemPlacement,
   defaultIconName,
   defaultPageName,
   defaultPageSlug,
+  mainNavigationTabPlacement,
+  placementOptions,
+  settingsAreaSidebarItemPlacement,
 } from './lib/constants'
 
 import 'datocms-react-ui/styles.css'
 import './styles/index.css'
+import PageNotFoundScreen from './entrypoints/PageNotFoundScreen/PageNotFoundScreen'
 
 connect({
   async onBoot(ctx: OnBootCtx) {
@@ -36,11 +44,16 @@ connect({
       return []
     }
 
+    const placement = [
+      pluginParameters.placement?.value || placementOptions[0].value,
+      pluginParameters.menuItemPlacement?.value ||
+        mainNavigationTabPlacement[0].value,
+    ] as MainNavigationTab['placement']
     return [
       {
         label: pluginParameters.pageName || defaultPageName,
         icon: pluginParameters.iconName || defaultIconName,
-        placement: ['before', 'content'],
+        placement,
         pointsTo: {
           pageId: pluginParameters.pageSlug || defaultPageSlug,
         },
@@ -56,11 +69,17 @@ connect({
     ) {
       return []
     }
+
+    const placement = [
+      pluginParameters.placement?.value || placementOptions[0].value,
+      pluginParameters.menuItemPlacement?.value ||
+        contentAreaSidebarItemPlacement[0].value,
+    ] as ContentAreaSidebarItem['placement']
     return [
       {
         label: pluginParameters.pageName || defaultPageName,
-        icon: defaultIconName,
-        placement: ['before', 'menuItems'],
+        icon: pluginParameters.iconName || defaultIconName,
+        placement,
         pointsTo: {
           pageId: pluginParameters.pageSlug || defaultPageSlug,
         },
@@ -78,14 +97,20 @@ connect({
     ) {
       return []
     }
+
+    const placement = [
+      pluginParameters.placement?.value || placementOptions[0].value,
+      pluginParameters.menuItemPlacement?.value ||
+        settingsAreaSidebarItemPlacement[0].value,
+    ] as SettingsAreaSidebarItemGroup['placement']
     return [
       {
-        label: 'Custom page',
-        placement: ['before', 'permissions'],
+        label: pluginParameters.pageGroupName || defaultPageName,
+        placement,
         items: [
           {
             label: pluginParameters.pageName || defaultPageName,
-            icon: defaultIconName,
+            icon: pluginParameters.iconName || defaultIconName,
             pointsTo: {
               pageId: pluginParameters.pageSlug || defaultPageSlug,
             },
@@ -100,5 +125,7 @@ connect({
     if (pageId === pageSlug) {
       return render(<PageScreen ctx={ctx} />)
     }
+
+    return render(<PageNotFoundScreen ctx={ctx} />)
   },
 })

@@ -1,7 +1,7 @@
 {
   "name": "datocms-plugin-custom-page",
   "homepage": "https://github.com/voorhoede/datocms-plugin-custom-page",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "The custom page DatoCMS plugin adds the ability to have a custom page in your DatoCMS instance",
   "engines": {
     "node": ">=16.0.0"
@@ -60,12 +60,12 @@
     "react-scripts": "^5.0.1"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.192",
-    "@types/node": "^18.15.11",
-    "@types/react": "^18.0.33",
-    "@types/react-dom": "^18.0.11",
-    "datocms-plugin-sdk": "^0.7.7",
-    "datocms-react-ui": "^0.7.7",
+    "@types/lodash": "^4.14.194",
+    "@types/node": "^20.1.1",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "datocms-plugin-sdk": "^0.7.12",
+    "datocms-react-ui": "^0.7.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "slugify": "^1.6.6",

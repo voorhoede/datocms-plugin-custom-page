@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import slugify from 'slugify'
 import {
   RenderConfigScreenCtx,
-  AwesomeFont5SolidIconIdentifier,
+  AwesomeFontIconIdentifier,
 } from 'datocms-plugin-sdk'
 
 import {
@@ -12,22 +12,38 @@ import {
   FieldGroup,
   TextField,
 } from 'datocms-react-ui'
-import { GlobalParameters, PageTypeOption } from '../../lib/types'
-import { pageTypeOptions, defaultIconName } from '../../lib/constants'
+import {
+  GlobalParameters,
+  PageType,
+  PageTypeOption,
+  PlacementOption,
+  MenuItemPlacementOption,
+} from '../../lib/types'
+import {
+  pageTypeOptions,
+  defaultIconName,
+  defaultPageName,
+  placementOptions,
+} from '../../lib/constants'
+import { getMenuItemPlacements } from '../../lib/helpers'
 import { icons } from '../../lib/icons'
 
 type Props = {
   ctx: RenderConfigScreenCtx
 }
 
-const fontawesomeUrl = 'https://fontawesome.com/v5/search?o=r&s=solid'
+const fontawesomeUrl = 'https://fontawesome.com/v6/search?o=r&s=solid'
 
 export default function ConfigScreen({ ctx }: Props) {
   const pluginParameters: GlobalParameters = ctx.plugin.attributes.parameters
   const selectedPageType = pluginParameters?.pageType || pageTypeOptions[0]
+  const selectedPlacement = pluginParameters?.placement || placementOptions[0]
   const [pageName, setPageName] = useState<GlobalParameters['pageName']>(
-    pluginParameters.pageName
+    pluginParameters.pageName || defaultPageName
   )
+  const [pageGroupName, setPageGroupName] = useState<
+    GlobalParameters['pageGroupName']
+  >(pluginParameters.pageGroupName || defaultPageName)
   const [iconName, setIconName] = useState<string>(
     pluginParameters.iconName || defaultIconName
   )
@@ -37,6 +53,13 @@ export default function ConfigScreen({ ctx }: Props) {
   >(pluginParameters.pageEmbedUrl)
   const [pageEmbedUrlError, setPageEmbedUrlError] = useState('')
 
+  const selectedMenuItemPlacement = useMemo(() => {
+    return (
+      pluginParameters.menuItemPlacement ||
+      getMenuItemPlacements(selectedPageType.value)[0]
+    )
+  }, [pluginParameters.menuItemPlacement, selectedPageType.value])
+
   function saveSettings(settingToSave: Partial<GlobalParameters>) {
     ctx.updatePluginParameters({
       ...pluginParameters,
@@ -45,10 +68,10 @@ export default function ConfigScreen({ ctx }: Props) {
     ctx.notice('Settings updated successfully!')
   }
 
-  function isIconValid(iconName: AwesomeFont5SolidIconIdentifier) {
+  function isIconValid(iconName: AwesomeFontIconIdentifier) {
     if (iconName && !icons.includes(iconName)) {
       setIconError(
-        `Icon not found. Use solid Fontawesome v5 icons: ${fontawesomeUrl}`
+        `Icon not found. Use solid Fontawesome v6 icons: ${fontawesomeUrl}`
       )
       return false
     }
@@ -71,14 +94,88 @@ export default function ConfigScreen({ ctx }: Props) {
 
   return (
     <Canvas ctx={ctx}>
-      <p>This DatoCMS plugin adds the ability to have a custom page in your DatoCMS instance.</p>
+      <p>
+        This DatoCMS plugin adds the ability to have a custom page in your
+        DatoCMS instance.
+      </p>
 
       <Form>
         <FieldGroup>
+          <SelectField
+            name="pageType"
+            id="pageType"
+            label="Where do you want to show the menu item?"
+            value={selectedPageType}
+            selectInputProps={{
+              options: pageTypeOptions,
+            }}
+            onChange={(newValue) => {
+              const pageTypeValue = newValue as PageTypeOption
+              saveSettings({
+                pageType: pageTypeValue,
+                menuItemPlacement: getMenuItemPlacements(
+                  pageTypeValue.value
+                )[0],
+              })
+            }}
+          />
+
+          <SelectField
+            name="placement"
+            id="placement"
+            label="Show the menu item before or after the other menu items?"
+            value={selectedPlacement}
+            selectInputProps={{
+              options: placementOptions,
+            }}
+            onChange={(newValue) => {
+              const placementValue = newValue as PlacementOption
+              saveSettings({
+                placement: placementValue,
+              })
+            }}
+          />
+
+          <SelectField
+            name="menuItemPlacement"
+            id="menuItemPlacement"
+            label={`${
+              selectedPlacement.value === 'before' ? 'Before' : 'After'
+            } which menu item do you want to show the menu item?`}
+            value={selectedMenuItemPlacement}
+            selectInputProps={{
+              options: getMenuItemPlacements(selectedPageType.value),
+            }}
+            onChange={(newValue) => {
+              const menuItemPlacementValue = newValue as MenuItemPlacementOption
+              saveSettings({ menuItemPlacement: menuItemPlacementValue })
+            }}
+          />
+
+          {pluginParameters?.pageType?.value ===
+            PageType.SettingsAreaSidebarItemGroups && (
+            <TextField
+              name="pageGroupName"
+              id="pageGroupName"
+              label="What is the title of the menu item?"
+              value={pageGroupName}
+              placeholder="Enter page group name"
+              textInputProps={{
+                onBlur: (e) => {
+                  const pageGroupNameValue = e.target.value
+                  if (pageGroupName !== pluginParameters.pageGroupName) {
+                    saveSettings({ pageGroupName: pageGroupNameValue })
+                  }
+                },
+              }}
+              onChange={(newValue) => setPageGroupName(newValue)}
+            />
+          )}
+
           <TextField
             name="pageName"
             id="pageName"
-            label="What is the name of the page?"
+            label="What is the label of menu item?"
             value={pageName}
             placeholder="Enter page name"
             textInputProps={{
@@ -99,20 +196,6 @@ export default function ConfigScreen({ ctx }: Props) {
             onChange={(newValue) => setPageName(newValue)}
           />
 
-          <SelectField
-            name="pageType"
-            id="pageType"
-            label="Where do you want to show the menu item?"
-            value={selectedPageType}
-            selectInputProps={{
-              options: pageTypeOptions,
-            }}
-            onChange={(newValue) => {
-              const pageTypeValue = newValue as PageTypeOption
-              saveSettings({ pageType: pageTypeValue })
-            }}
-          />
-
           <TextField
             name="iconName"
             id="iconName"
@@ -125,7 +208,7 @@ export default function ConfigScreen({ ctx }: Props) {
               onBlur: (e) => {
                 const iconNameValue = e.target.value
                   .toLowerCase()
-                  .trim() as AwesomeFont5SolidIconIdentifier
+                  .trim() as AwesomeFontIconIdentifier
                 if (
                   iconName !== pluginParameters.iconName &&
                   isIconValid(iconNameValue)
@@ -134,9 +217,7 @@ export default function ConfigScreen({ ctx }: Props) {
                 }
               },
             }}
-            onChange={(newValue) =>
-              setIconName(newValue)
-            }
+            onChange={(newValue) => setIconName(newValue)}
           />
 
           <TextField
