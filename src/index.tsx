@@ -78,7 +78,7 @@ connect({
     return [
       {
         label: pluginParameters.pageName || defaultPageName,
-        icon: defaultIconName,
+        icon: pluginParameters.iconName || defaultIconName,
         placement,
         pointsTo: {
           pageId: pluginParameters.pageSlug || defaultPageSlug,
@@ -110,7 +110,7 @@ connect({
         items: [
           {
             label: pluginParameters.pageName || defaultPageName,
-            icon: defaultIconName,
+            icon: pluginParameters.iconName || defaultIconName,
             pointsTo: {
               pageId: pluginParameters.pageSlug || defaultPageSlug,
             },

@@ -20,12 +20,7 @@ First add this plugin via DatoCMS Settings > Plugins > Add (`/admin/plugins/new`
 For this plugin you can configure global settings to make the plugin behave as you want.
 ![](https://github.com/voorhoede/datocms-plugin-custom-page/raw/main/docs/custom-page-settings.png)
 
-#### Name of the page
-*What is the name of the page?*
-
-This will be the label of the menu item and will be slugified to use as slug in the url
-
-#### Placement of the menu item
+#### Location of the menu item
 *Where do you want to show the menu item?*
 
 You can choose between
@@ -42,10 +37,34 @@ You can choose between
 **Settings menu** will show the menu item as first item in the sidebar on the setting pages
 ![](https://github.com/voorhoede/datocms-plugin-custom-page/raw/main/docs/custom-page-sidebar-settings.png)
 
+#### Before or after placement of the menu item
+*Show the menu item before or after the other menu items?*
+
+You can choose between
+* Before menu item
+* After menu item
+
+This will show the menu item relative to the menu item selected in the next setting
+
+#### Placement of the menu item relative to other menu items
+*Before/After which menu item do you want to show the menu item?*
+
+Depending on the location of the menu item you can choose between the existing menu items in your DatoCMS instance.
+
+#### Name of the page group (only when location is `Settings menu`)
+*What is the title of the menu item?*
+
+This will be the group title of the menu item and is shown in the sidebar as a title above the menu item
+
+#### Name of the page
+*What is the name of the page?*
+
+This will be the label of the menu item and will be slugified to use as slug in the url
+
 #### Kind of icon
 *What kind of icon do you want to show?*
 
-This needs to be a solid Font Awesome v5 icon name. (https://fontawesome.com/v5/search?o=r&s=solid)
+This needs to be a solid Font Awesome v6 icon name. (https://fontawesome.com/v6/search?o=r&s=solid)
 
 #### Page to embed
 *What page do you want to embed?*

@@ -1,4 +1,4 @@
-import type { AwesomeFont5SolidIconIdentifier } from 'datocms-plugin-sdk'
+import type { AwesomeFontIconIdentifier } from 'datocms-plugin-sdk'
 
 export enum PageType {
   MainNavigationTabs = 'mainNavigationTabs',
@@ -29,7 +29,7 @@ export type GlobalParameters = {
   pageGroupName?: string
   pageName?: string
   pageSlug?: string
-  iconName?: AwesomeFont5SolidIconIdentifier
+  iconName?: AwesomeFontIconIdentifier
   placement?: PlacementOption
   menuItemPlacement?: MenuItemPlacementOption
   pageEmbedUrl?: string

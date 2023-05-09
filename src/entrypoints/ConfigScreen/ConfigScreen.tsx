@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import slugify from 'slugify'
 import {
   RenderConfigScreenCtx,
-  AwesomeFont5SolidIconIdentifier,
+  AwesomeFontIconIdentifier,
 } from 'datocms-plugin-sdk'
 
 import {
@@ -32,7 +32,7 @@ type Props = {
   ctx: RenderConfigScreenCtx
 }
 
-const fontawesomeUrl = 'https://fontawesome.com/v5/search?o=r&s=solid'
+const fontawesomeUrl = 'https://fontawesome.com/v6/search?o=r&s=solid'
 
 export default function ConfigScreen({ ctx }: Props) {
   const pluginParameters: GlobalParameters = ctx.plugin.attributes.parameters
@@ -68,10 +68,10 @@ export default function ConfigScreen({ ctx }: Props) {
     ctx.notice('Settings updated successfully!')
   }
 
-  function isIconValid(iconName: AwesomeFont5SolidIconIdentifier) {
+  function isIconValid(iconName: AwesomeFontIconIdentifier) {
     if (iconName && !icons.includes(iconName)) {
       setIconError(
-        `Icon not found. Use solid Fontawesome v5 icons: ${fontawesomeUrl}`
+        `Icon not found. Use solid Fontawesome v6 icons: ${fontawesomeUrl}`
       )
       return false
     }
@@ -208,7 +208,7 @@ export default function ConfigScreen({ ctx }: Props) {
               onBlur: (e) => {
                 const iconNameValue = e.target.value
                   .toLowerCase()
-                  .trim() as AwesomeFont5SolidIconIdentifier
+                  .trim() as AwesomeFontIconIdentifier
                 if (
                   iconName !== pluginParameters.iconName &&
                   isIconValid(iconNameValue)
