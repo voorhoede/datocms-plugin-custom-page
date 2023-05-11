@@ -1,6 +1,8 @@
 import type { AwesomeFontIconIdentifier } from 'datocms-plugin-sdk'
 import { PageType, PlacementType } from './types'
 
+export const fontawesomeVersion = 'v6'
+export const fontawesomeUrl = `https://fontawesome.com/${fontawesomeVersion}/search?o=r&s=solid`
 export const defaultPageName = 'Custom page'
 export const defaultPageSlug = 'custom-page'
 export const defaultIconName: AwesomeFontIconIdentifier = 'cog'
