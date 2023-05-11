@@ -1,0 +1,12 @@
+.toolbar {
+  overflow: auto;
+}
+
+.content {
+  background: var(--light-bg-color);
+  padding: var(--spacing-m);
+}
+
+.separator {
+  flex: 1;
+}
