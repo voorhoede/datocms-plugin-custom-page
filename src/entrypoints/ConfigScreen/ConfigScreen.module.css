@@ -1,0 +1,16 @@
+.toolbar {
+  overflow: auto;
+}
+
+.toolbarButton {
+  flex-shrink: 0;
+}
+
+.content {
+  background: var(--light-bg-color);
+  padding: var(--spacing-m);
+}
+
+.separator {
+  flex: 1;
+}

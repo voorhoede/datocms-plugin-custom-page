@@ -24,7 +24,7 @@ export enum PlacementType {
   ApiExplorer = 'apiExplorer',
 }
 
-export type GlobalParameters = {
+export type Page = {
   pageType?: PageTypeOption
   pageGroupName?: string
   pageName?: string
@@ -33,6 +33,10 @@ export type GlobalParameters = {
   placement?: PlacementOption
   menuItemPlacement?: MenuItemPlacementOption
   pageEmbedUrl?: string
+}
+
+export interface GlobalParameters extends Page {
+  pages?: Page[]
 }
 
 export type PageTypeOption = {

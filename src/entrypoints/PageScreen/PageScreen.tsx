@@ -1,34 +1,31 @@
-import { RenderPageCtx } from 'datocms-plugin-sdk'
-import { Canvas } from 'datocms-react-ui'
-import { GlobalParameters } from '../../lib/types'
+import { Page } from '../../lib/types'
 
 import styles from './PageScreen.module.css'
 
 type PropTypes = {
-  ctx: RenderPageCtx
+  page: Page
 }
 
-export default function PageScreen({ ctx }: PropTypes) {
-  const pluginParameters: GlobalParameters = ctx.plugin.attributes.parameters
-  const embededUrl = pluginParameters.pageEmbedUrl
+export default function PageScreen({ page }: PropTypes) {
+  const { pageEmbedUrl, pageName } = page
 
   const Content = () => {
-    if (embededUrl) {
+    if (pageEmbedUrl) {
       return (
         <iframe
           className={styles.iframe}
-          title={pluginParameters.pageName}
-          src={pluginParameters.pageEmbedUrl}
+          title={pageName}
+          src={pageEmbedUrl}
         />
       )
     } else {
       return (
         <div className="layout">
-          <p>{`Welcome to ${pluginParameters.pageName || 'this page'}!`}</p>
+          <p>{`Welcome to ${pageName || 'this page'}!`}</p>
         </div>
       )
     }
   }
 
-  return <Canvas ctx={ctx}>{Content()}</Canvas>
+  return Content()
 }

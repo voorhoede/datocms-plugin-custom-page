@@ -1,8 +1,8 @@
 {
   "name": "datocms-plugin-custom-page",
   "homepage": "https://github.com/voorhoede/datocms-plugin-custom-page",
-  "version": "1.1.0",
-  "description": "The custom page DatoCMS plugin adds the ability to have a custom page in your DatoCMS instance",
+  "version": "2.0.0",
+  "description": "The custom page DatoCMS plugin adds the ability to have custom pages in your DatoCMS instance",
   "engines": {
     "node": ">=16.0.0"
   },
@@ -19,6 +19,8 @@
     "custom",
     "page",
     "custom-page",
+    "pages",
+    "multiple-pages",
     "docs",
     "documentation",
     "documentation-page",

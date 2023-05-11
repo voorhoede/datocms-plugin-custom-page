@@ -1,15 +1,16 @@
 # DatoCMS plugin: Custom page
 
-**This DatoCMS plugin adds the ability to have a custom page in your DatoCMS instance. This page can be anything and will be rendered inside an iframe in your DatoCMS instance. With custom placement of the menu items and ability to add any page you have the freedom to add any page to your DatoCMS instance.**
+**This DatoCMS plugin adds the ability to have custom pages in your DatoCMS instance. These pages can be anything and will be rendered inside an iframe in your DatoCMS instance. With custom placement of the menu items and ability to add any page you have the freedom to add any page to your DatoCMS instance.**
 
 ![](https://github.com/voorhoede/datocms-plugin-custom-page/raw/main/docs/preview.png)
 
 ## Features
 
-* Custom page
+* Custom pages
+* Multiple pages
 * Custom documentation
 * Custom menu item
-* Choose the location of a menu item
+* Choose the placement of a menu item
 
 ## Configuration
 
@@ -18,7 +19,10 @@ First add this plugin via DatoCMS Settings > Plugins > Add (`/admin/plugins/new`
 ### Plugin settings
 
 For this plugin you can configure global settings to make the plugin behave as you want.
+
 ![](https://github.com/voorhoede/datocms-plugin-custom-page/raw/main/docs/custom-page-settings.png)
+
+By clicking on the `+` button you can add a page and have multiple custom pages in your DatoCMS instance.
 
 #### Location of the menu item
 *Where do you want to show the menu item?*
@@ -29,12 +33,15 @@ You can choose between
 * Settings menu
 
 **Top menu** will show the menu item as first item in the top navigation bar
+
 ![](https://github.com/voorhoede/datocms-plugin-custom-page/raw/main/docs/custom-page-top-menu.png)
 
 **Side menu** will show the menu item as first item in the sidebar on the content pages
+
 ![](https://github.com/voorhoede/datocms-plugin-custom-page/raw/main/docs/custom-page-sidebar.png)
 
 **Settings menu** will show the menu item as first item in the sidebar on the setting pages
+
 ![](https://github.com/voorhoede/datocms-plugin-custom-page/raw/main/docs/custom-page-sidebar-settings.png)
 
 #### Before or after placement of the menu item
