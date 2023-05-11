@@ -82,7 +82,7 @@ export default function ConfigScreen({ ctx }: Props) {
   return (
     <Canvas ctx={ctx}>
       <p>
-        This DatoCMS plugin adds the ability to have a custom page in your
+        This DatoCMS plugin adds the ability to have custom pages in your
         DatoCMS instance.
       </p>
 
