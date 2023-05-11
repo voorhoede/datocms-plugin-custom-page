@@ -88,7 +88,7 @@ export default function ConfigScreen({ ctx }: Props) {
 
       <Toolbar className={styles.toolbar}>
         <ToolbarStack stackSize="s">
-          <ButtonGroup>
+          <ButtonGroup className={styles.toolbarButton}>
             {originalPages.map((page) => (
               <ButtonGroupButton
                 key={page.pageSlug}
@@ -100,7 +100,7 @@ export default function ConfigScreen({ ctx }: Props) {
             ))}
           </ButtonGroup>
           <div className={styles.separator} />
-          <ToolbarButton onClick={addPage}>
+          <ToolbarButton className={styles.toolbarButton} onClick={addPage}>
             <PlusIcon />
           </ToolbarButton>
         </ToolbarStack>
