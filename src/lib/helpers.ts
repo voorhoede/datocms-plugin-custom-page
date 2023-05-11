@@ -1,4 +1,4 @@
-import { PageType, MenuItemPlacementOption } from './types'
+import { Page, PageType, MenuItemPlacementOption } from './types'
 import {
   settingsAreaSidebarItemPlacement,
   contentAreaSidebarItemPlacement,
@@ -17,4 +17,15 @@ export function getMenuItemPlacements(
   }
 
   return mainNavigationTabPlacement
+}
+
+export function checkAndGetId(id: string, pages: Page[]): string {
+  let idToCheck = id
+  const idExists = pages.find((obj) => obj.pageSlug === id)
+
+  if (idExists) {
+    return checkAndGetId(`${idToCheck}-1`, pages)
+  }
+
+  return idToCheck
 }
