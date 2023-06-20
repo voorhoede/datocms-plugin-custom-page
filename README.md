@@ -81,7 +81,3 @@ This field needs to be an existing URL you can embed (like `https://voorhoede.nl
 ## Contributing
 
 See [contributing.md](https://github.com/voorhoede/datocms-plugin-custom-page/blob/main/contributing.md).
-
-## License
-
-*MIT Licensed* by [De Voorhoede](https://www.voorhoede.nl).
