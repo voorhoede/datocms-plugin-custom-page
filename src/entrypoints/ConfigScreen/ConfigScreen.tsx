@@ -31,7 +31,7 @@ export default function ConfigScreen({ ctx }: Props) {
 
   function savePageSettings(
     id: string,
-    settingToSave: Partial<GlobalParameters>
+    settingToSave: Partial<GlobalParameters>,
   ) {
     let updatedPages = originalPages
     const pageToUpdate = originalPages.find((obj) => obj.pageSlug === id)
@@ -58,7 +58,7 @@ export default function ConfigScreen({ ctx }: Props) {
   function addPage() {
     const newPageId = checkAndGetId(
       `${defaultPageSlug}-${originalPages.length}`,
-      originalPages
+      originalPages,
     )
     setActivePage(newPageId)
     savePageSettings(newPageId, {

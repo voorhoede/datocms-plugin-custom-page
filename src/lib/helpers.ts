@@ -6,7 +6,7 @@ import {
 } from './constants'
 
 export function getMenuItemPlacements(
-  pageType: PageType
+  pageType: PageType,
 ): MenuItemPlacementOption[] {
   if (pageType === PageType.SettingsAreaSidebarItemGroups) {
     return settingsAreaSidebarItemPlacement
