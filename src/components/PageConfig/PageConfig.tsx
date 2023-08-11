@@ -51,13 +51,13 @@ export function PageConfig({
   const selectedPageType = currentPage?.pageType || pageTypeOptions[0]
   const selectedPlacement = currentPage?.placement || placementOptions[0]
   const [pageName, setPageName] = useState<GlobalParameters['pageName']>(
-    currentPage?.pageName || defaultPageName
+    currentPage?.pageName || defaultPageName,
   )
   const [pageGroupName, setPageGroupName] = useState<
     GlobalParameters['pageGroupName']
   >(currentPage?.pageGroupName || defaultPageName)
   const [iconName, setIconName] = useState<string>(
-    currentPage?.iconName || defaultIconName
+    currentPage?.iconName || defaultIconName,
   )
   const [iconError, setIconError] = useState('')
   const [pageEmbedUrl, setPageEmbedUrl] = useState<
@@ -79,7 +79,7 @@ export function PageConfig({
   function isIconValid(iconName: AwesomeFontIconIdentifier) {
     if (iconName && !icons.includes(iconName)) {
       setIconError(
-        `Icon not found. Use solid Fontawesome ${fontawesomeVersion} icons: ${fontawesomeUrl}`
+        `Icon not found. Use solid Fontawesome ${fontawesomeVersion} icons: ${fontawesomeUrl}`,
       )
       return false
     }
@@ -94,7 +94,7 @@ export function PageConfig({
       return true
     } catch (_) {
       setPageEmbedUrlError(
-        `Invalid URL. Please enter a valid URL. Example: https://www.datocms.com`
+        `Invalid URL. Please enter a valid URL. Example: https://www.datocms.com`,
       )
       return false
     }
@@ -133,7 +133,7 @@ export function PageConfig({
                     lower: true,
                     strict: true,
                   }),
-                  allPages
+                  allPages,
                 )
                 if (pageNameValue !== currentPage?.pageName) {
                   saveSettings({ pageName: pageNameValue, pageSlug })
@@ -176,7 +176,7 @@ export function PageConfig({
               saveSettings({
                 pageType: pageTypeValue,
                 menuItemPlacement: getMenuItemPlacements(
-                  pageTypeValue.value
+                  pageTypeValue.value,
                 )[0],
               })
             }}

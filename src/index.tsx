@@ -42,7 +42,7 @@ connect({
       ? pluginParameters?.pages.filter(
           (page) =>
             !page.pageType ||
-            page.pageType.value === PageType.MainNavigationTabs
+            page.pageType.value === PageType.MainNavigationTabs,
         )
       : []
 
@@ -71,7 +71,7 @@ connect({
     const pluginParameters: GlobalParameters = ctx.plugin.attributes.parameters
     const pages = pluginParameters?.pages
       ? pluginParameters?.pages.filter(
-          (page) => page.pageType?.value === PageType.ContentAreaSidebarItems
+          (page) => page.pageType?.value === PageType.ContentAreaSidebarItems,
         )
       : []
 
@@ -102,7 +102,7 @@ connect({
     const pages = pluginParameters?.pages
       ? pluginParameters?.pages.filter(
           (page) =>
-            page.pageType?.value === PageType.SettingsAreaSidebarItemGroups
+            page.pageType?.value === PageType.SettingsAreaSidebarItemGroups,
         )
       : []
 
@@ -143,7 +143,7 @@ connect({
         return render(
           <Canvas ctx={ctx}>
             <PageScreen page={page} />
-          </Canvas>
+          </Canvas>,
         )
       }
       render(<PageNotFoundScreen ctx={ctx} />)

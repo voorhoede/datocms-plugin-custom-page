@@ -12,11 +12,7 @@ export default function PageScreen({ page }: PropTypes) {
   const Content = () => {
     if (pageEmbedUrl) {
       return (
-        <iframe
-          className={styles.iframe}
-          title={pageName}
-          src={pageEmbedUrl}
-        />
+        <iframe className={styles.iframe} title={pageName} src={pageEmbedUrl} />
       )
     } else {
       return (
