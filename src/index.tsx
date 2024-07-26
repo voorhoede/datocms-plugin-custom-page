@@ -12,6 +12,7 @@ import { Canvas } from 'datocms-react-ui'
 
 import ConfigScreen from './entrypoints/ConfigScreen/ConfigScreen'
 import PageScreen from './entrypoints/PageScreen/PageScreen'
+import PageNotFoundScreen from './entrypoints/PageNotFoundScreen/PageNotFoundScreen'
 import { render } from './lib/render'
 import { migrateData } from './lib/migrateData'
 import { GlobalParameters, PageType } from './lib/types'
@@ -25,9 +26,7 @@ import {
   settingsAreaSidebarItemPlacement,
 } from './lib/constants'
 
-import 'datocms-react-ui/styles.css'
 import './styles/index.css'
-import PageNotFoundScreen from './entrypoints/PageNotFoundScreen/PageNotFoundScreen'
 
 connect({
   async onBoot(ctx: OnBootCtx) {

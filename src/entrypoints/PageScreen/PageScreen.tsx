@@ -1,6 +1,6 @@
 import { Page } from '../../lib/types'
 
-import styles from './PageScreen.module.css'
+import * as styles from './PageScreen.module.css'
 
 type PropTypes = {
   page: Page

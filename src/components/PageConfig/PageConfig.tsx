@@ -27,9 +27,9 @@ import {
 } from '../../lib/constants'
 import { checkAndGetId, getMenuItemPlacements } from '../../lib/helpers'
 import { icons } from '../../lib/icons'
-
-import styles from './PageConfig.module.css'
 import { DeleteIcon } from '../DeleteIcon/DeleteIcon'
+
+import * as styles from './PageConfig.module.css'
 
 type Props = {
   id: string
@@ -106,7 +106,6 @@ export function PageConfig({
         <p className="h2">{pageName}</p>
         {showDeleteButton && (
           <Button
-            className={styles.deleteButton}
             buttonSize="xs"
             buttonType="negative"
             leftIcon={<DeleteIcon />}
