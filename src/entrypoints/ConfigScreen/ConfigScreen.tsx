@@ -10,12 +10,12 @@ import {
   ToolbarButton,
 } from 'datocms-react-ui'
 import { GlobalParameters } from '../../lib/types'
-import { PageConfig } from '../../components/PageConfig/PageConfig'
 import { defaultPageName, defaultPageSlug } from '../../lib/constants'
-
-import styles from './ConfigScreen.module.css'
-import { PlusIcon } from '../../components/PlusIcon/PlusIcon'
 import { checkAndGetId } from '../../lib/helpers'
+import { PageConfig } from '../../components/PageConfig/PageConfig'
+import { PlusIcon } from '../../components/PlusIcon/PlusIcon'
+
+import * as styles from './ConfigScreen.module.css'
 
 type Props = {
   ctx: RenderConfigScreenCtx
